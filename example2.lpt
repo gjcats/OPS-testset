@@ -1,0 +1,104 @@
+
+ Project  : Second examp[le of an OPS-Pro application
+ Substance: Pb (lead) - aer.
+ Date/time: 02-08-2020; 07:42:28
+ =============== OPS-version: W-4.6.2.5 06 dec 2019 ===============
+
+
+ Concentrations for Pb (lead) - aer.
+ Calculated for specific locations
+
+  nr    name      x-coord y-coord  pri.con  dry.dep  wet.dep  tot.dep
+                      (m)     (m)ug/m3     mol/ha/y mol/ha/y mol/ha/y
+                                         x        x        x        x
+                                    1.E-03   1.E-03   1.E-03   1.E-03
+
+
+   1 Poortugaal     86000  430000       13       60       37       97
+   2 Rockanje       64500  432500        8       48       20       69
+   3 Maasdijk       75000  441800       12       81       33      114
+   4 Vlaardingen    82000  436400      105      992      159     1151
+
+
+ Project  : Second examp[le of an OPS-Pro application
+ Substance: Pb (lead) - aer.
+ Date/time: 02-08-2020; 07:42:28
+ =============== OPS-version: W-4.6.2.5 06 dec 2019 ===============
+
+
+
+ Summary statistics for Pb (lead) - aer.
+
+ Pb (lead) - aer. considered as aerosol
+ -------------------------------------------------------------------------------
+
+ average Pb (lead) - aer. concentration          : 0.347E-01ug/m3 
+ eff. chem. conv. rate                           :     0.000 %/h
+
+ average dry deposition                          : 0.295E+00 mol/ha/y 
+ effective dry deposition velocity               :     0.559 cm/s
+
+ average wet deposition                          : 0.623E-01 mol/ha/y 
+ effective wet deposition rate                   :     2.481 %/h
+ annual precipitation amount                     :       807 mm
+
+ average deposition                              : 0.358E+00 mol/ha/y 
+ -------------------------------------------------------------------------------
+
+
+ Project  : Second examp[le of an OPS-Pro application
+ Substance: Pb (lead) - aer.
+ Date/time: 02-08-2020; 07:42:28
+ =============== OPS-version: W-4.6.2.5 06 dec 2019 ===============
+
+
+
+ Meteorological statistics used:
+ -------------------------------
+
+ climatological area  :  The Netherlands (interpolated meteo)
+ type of statistics   :  normal statistics
+ climatological period:  050101 - 150101  long term period              
+
+
+ Surface roughness (z0) data used:
+ ---------------------------------
+ Regionally differentiated z0 values determined by OPS
+
+
+ Files used by OPS:
+ ------------------
+ Control parameter file         : C:\Applics\OPS-Pro_2020\examples\example2.ctr
+ Emission data file             : C:\Applics\OPS-Pro_2020\examples\example2.brn
+ Diurnal variation file(s)
+   - pre-defined                : C:\Applics\OPS-Pro_2020\Data\dvepre.ops
+ Part. size distr. file(s)
+   - pre-defined                : C:\Applics\OPS-Pro_2020\Data\pmdpre.ops
+   - user defined               : C:\Applics\OPS-Pro_2020\examples\example2.psd
+ Receptor data file             : C:\Applics\OPS-Pro_2020\examples\Example2.rcp
+ Climatological data files      : C:\Applics\OPS-Pro_2020\Meteo\m005114c.001...006
+ Surface roughness file         : C:\Applics\OPS-Pro_2020\Data\z0_jr_250_lgn7.ops
+
+
+ Files produced by OPS:
+ ----------------------
+ Plotter output file            : C:\Applics\OPS-Pro_2020\examples\example2.tab
+ Printer output file (this file): C:\Applics\OPS-Pro_2020\examples\example2.lpt
+
+
+ Project  : Second examp[le of an OPS-Pro application
+ Substance: Pb (lead) - aer.
+ Date/time: 02-08-2020; 07:42:28
+ =============== OPS-version: W-4.6.2.5 06 dec 2019 ===============
+
+
+
+ Emission source data:
+ ---------------------
+
+ Applied correction factor: 1.0000
+
+
+ ssn    x(m)    y(m)   q (g/s) hc(MW)  h(m)   d(m)  s(m)  tb dgr cat area subst.
+ --- ------- ------- --------- ------ ----- ------ ----- --- --- --- ---- --------
+   1   80000  435000 0.100E+01  0.000  40.0     0.   0.0   1  -4   2  528  Pb (lead) - aer.
