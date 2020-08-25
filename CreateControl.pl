@@ -60,8 +60,10 @@ $MTFILE		= "$base$stem/Meteo/m005114c.*";
 $PLTFILE	= "$base$stem/Output/$PROJECT/$RUNID.plt";
 $PRNFILE	= "$base$stem/Output/$PROJECT/$RUNID.lpt";
 
+$z0_eur		= "${DATADIR}z0eur.asc";
+
 # replace the /-sign
-foreach my $name ( qw/ base stem DATADIR EMFILE RCPFILE Z0FILE LUFILE MTFILE PLTFILE PRNFILE / ) {
+foreach my $name ( qw/ base stem DATADIR EMFILE RCPFILE Z0FILELUFILE MTFILE PLTFILE PRNFILE / ) {
    $$name =~ s/\//$dirsign/g;
 }
 
@@ -77,7 +79,7 @@ if ( $printony ) {
 }
 
 if ( $printony ) {
-   foreach my $name ( qw/ MTFILE EMFILE Z0FILE LUFILE RCPFILE USPSDFILE USDVEFILE / ) {
+   foreach my $name ( qw/ MTFILE EMFILE Z0FILE LUFILE RCPFILE USPSDFILE USDVEFILE z0_eur / ) {
       print "Input file $name is $$name\n";
    }
    foreach my $name ( qw/ PLTFILE PRNFILE / ) {
@@ -101,7 +103,7 @@ $mtfile =~ s/\.\*$/./;
 foreach my $name ( qw/ 000 001 002 003 004 005 006 / ) {
    -s "$mtfile$name" || die ">>>> $mtfile$name does not exist or has zero size\n";
 }
-foreach my $name ( qw/ Z0FILE LUFILE RCPFILE USPSDFILE USDVEFILE / ) {
+foreach my $name ( qw/ Z0FILE LUFILE RCPFILE USPSDFILE USDVEFILE z0_eur / ) {
    next unless $$name;
    if ( $examples ) {
       next if $name eq 'LUFILE';
@@ -110,7 +112,7 @@ foreach my $name ( qw/ Z0FILE LUFILE RCPFILE USPSDFILE USDVEFILE / ) {
    -s $$name || die ">>>> $$name does not exist or has zero size\n";
 }
 
-# check existence of output directories
+# check existence of output directories; but when failing, try to create it for a new RUNID
 foreach my $name ( qw/ PLTFILE PRNFILE / ) {
    my $dir = $$name;
    $dir =~ s/^(.*)$dirsign.*/$1/;
@@ -120,7 +122,6 @@ foreach my $name ( qw/ PLTFILE PRNFILE / ) {
       if ( $dir eq "$d$dirsign$PROJECT" ) { 
           mkdir $dir;
           -d $dir || die ">>>> could not create $dir. It is needed  to write $$name to\n";
-#         chmod 0755, $dir;
       }
    }
    -d $dir || die ">>>> $dir does not exist. It is needed to write $$name to\n";
@@ -214,7 +215,6 @@ foreach my $name ( qw/ PLTFILE PRNFILE / ) {
       if ( $dir eq "$d$dirsign$PROJECT" ) { 
           mkdir $dir;
           -d $dir || die ">>>> could not create $dir. It is needed  to write $$name to\n";
-#         chmod 0755, $dir;
       }
    }
    -d $dir || die ">>>> $dir does not exist. It is needed to write $$name to\n";

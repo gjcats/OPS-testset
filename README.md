@@ -12,8 +12,6 @@ This is the command line to run OPS for example1:
 
 and CreateControl.pl serves to help you to create example1.ctr and example2.ctr,
 in particular, to get the proper directory structure for your operating system
-amd assist you to find the proper location of in- and output files.
-
 perl CreateControl.pl -xp some_FSROOT
 
 will list the files it expects you to create.
@@ -29,17 +27,18 @@ last character of FSROOT is / (\ on Windows).
 
 The meteofiles, listed as
 MTFILE 	.....m005114c.*
-are avauialable in the file 2019_en_0514.zip. So unzip it in the
+are avaialable in the file 2019_en_0514.zip. So unzip it in the
 proper directory.
 (NB These files are Fortran direct access files containing integer*2 values
 and in principle OPS knows how to handle endianness, so the file is probably
 portable, although some Fortran compiler may have a deviating direct access format.)
 
 (g)unzip the file z0_jr_250_lgn7.zip in the directory for the surface rougness
-file Z0FILE
-	(NB This file is a formatted file. It will take a long time to process
+file Z0FILE. It will also create a file z0eur.asc. The latter must be in
+DATADIR, so to make it easy on yourself. also put Z0FILE there.
+	(NB These file are formatted files. They will take a long time to process
 	(think of 2 seconds). If you are going to do many OPS runs you may want to
-	replace it with an unformatted one. This is the stronger for the landuse
+	replace them with unformatted ones. This is the stronger for the landuse
 	file lu...  because it contains 10 of those fields. The landuse file is 
 	not included in the testset because the examples do not use it.
 	To make OPS accept the unformatted files compile OPS without the
@@ -47,6 +46,10 @@ file Z0FILE
 	The Fortran program for2asc.f90 and the bash script for2asc.sh were
 	used to convert the original unformatted files to formatted. To convert
 	back, modify the Fortran apppropriately....
+	Be aware that you should write the unformatted files with the same word
+	length as with which OPS is going to read them. That is integer*2 for
+	the integer files, and for reals real*4 or real*8 dependent on the
+	default word length on your machine)
 	).
 
 The files example1.brn and example2.brn contain the source specification, and
