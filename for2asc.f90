@@ -61,7 +61,7 @@ if ( nrcol > maxrecsize ) then
    stop
 endif
 
-form = to_upper( form )
+form = trim( adjustl( to_upper( form ) ) )
 
 write(6, fmt = headerfmt ) &
      ij,inu1,inu2,inu3,kmpnm, eenheid, oors, comment, form, kode, xorgl,          &
@@ -77,7 +77,7 @@ write(2, '(a,a)') '  dataformat is ', repform
 ! read data (distinction between real and int)
 realorint = form
 
-if ( realorint .eq. 'E' .or.  realorint .eq. 'F' ) then
+if ( realorint .eq. 'E' .or. realorint .eq. 'F' ) then
    do i=1,nrrow
        read(1, iostat=ierr) (rgrid(j), j=1,nrcol)
        if (ierr.ne.0) then
@@ -88,8 +88,7 @@ if ( realorint .eq. 'E' .or.  realorint .eq. 'F' ) then
            write(6,*) 'when writing file iostat=', ierr
        endif
    enddo
-endif
-if ( realorint .eq. 'I' ) then
+else if ( realorint .eq. 'I' ) then
    do i=1,nrrow
        read(1, iostat=ierr) (igrid(j), j=1,nrcol)
        if (ierr.ne.0) then
@@ -100,6 +99,9 @@ if ( realorint .eq. 'I' ) then
            write(6,*) 'when writing file iostat=', ierr
        endif
    enddo
+else 
+   write(6,*) 'unrecognised format string ', form
+   error stop
 endif
 
 goto 1	! read next grid
