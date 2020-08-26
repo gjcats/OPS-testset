@@ -33,10 +33,11 @@ proper directory.
 and in principle OPS knows how to handle endianness, so the file is probably
 portable, although some Fortran compiler may have a deviating direct access format.)
 
-(g)unzip the file z0_jr_250_lgn7.zip in the directory for the surface rougness
-file Z0FILE. It will also create a file z0eur.asc. The latter must be in
-DATADIR, so to make it easy on yourself. also put Z0FILE there.
-	(NB These file are formatted files. They will take a long time to process
+(g)unzip the file dvepre.zip in the directory for the surface rougness
+file Z0FILE. It will create that Z0FILE, and also files z0eur.asc, dvepre.ops and
+pmdpre.ops. These 3 must reside in DATADIR, so to make it easy on yourself, also
+put Z0FILE there.
+	(NB The z0-files are formatted files. They will take a long time to process
 	(think of 2 seconds). If you are going to do many OPS runs you may want to
 	replace them with unformatted ones. This is the stronger for the landuse
 	file lu...  because it contains 10 of those fields. The landuse file is 
