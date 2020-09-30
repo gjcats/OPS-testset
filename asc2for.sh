@@ -9,8 +9,8 @@ if [[ $1 == -4 ]]; then flag=; elif [[ $1 == -8 ]]; then flag=-fdefault-real-8 ;
 base=`basename -s .asc $2`
 out=$base.ops
 if [ -s $out ]; then
-   check=`read -p "do you want to overwrite $out? [y/n]"`
-   [ $check  y ] || out=$base$1.ops
+   read -a check -p "do you want to overwrite $out? [y/n]"
+   [ "$check" = "y" ] || out=$base$1.ops
 fi
 echo to create $out
 mkdir $$
