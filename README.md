@@ -1,4 +1,66 @@
 # OPS-testset
+
+Gerard Cats, 20 October 2020
+
+Some assistance for porting OPS
++++++++++++++++++++++++++++++++
+When you request OPS from RIVM you get a directory Applics/OPS-Pro_2020
+including examples.zip, and a directory Data.
+
+For version 5.0.0.0., only the following files are relevant:
+1. For conversion of Fortran unformatted files:
+opsINasc.zip asc2for.f90 asc2for.sh
+2. For preparing the control files:
+Prepctr.pl
+
+1. Fortran unformatted files
+----------------------------
+The Data directory contains many Fortran unformatted files. When porting
+to a system where the Fortran compiler uses a different internal format
+(e.g. big-endian, or non IEEE), you can create the files in local internal
+format by unzipping opsINasc.zip, and converting the resulting ascii files
+into Fortran unformatted with the script asc2for.f90.
+NB1: make sure to use the same compiler and compiler flags in the script asc2for.sh
+as you are going to use to make the OPS executable.
+NB2: the resulting .ops files must be overwrite their "parents" in the
+Data directory, because that is where OPS is going to expect them. You
+may want to make a backup of the parents first!
+NB3: when you are going to use influence of buildings in OPS, you need to
+convert the file buildingFactorsTable.unf to your local Fortran unformatted file.
+No support for that, as yet. Sorry.
+NB4: there is also a directory with meteorological data. Those files are
+also unformatted, but it looks like their usage is portable (integer*2,
+direct access, and automatic conversion of endianness).
+
+2. Control files
+----------------
+RIVM provides two examples. When porting you should check that your port
+produces the same results as the two examples. Those results are in the
+file examples.zip.
+The OPS run is configured by files *.ctr. Thee ctr files are also in examples.zip, but
+because they contain full paths they need porting. The script Prepctr.pl
+performs that task. It creates subdirectory of your cwd, named "output", in whcch
+it stores the files from examples.zip needed to run the examples. It also
+creates the ctr files in your working directory, to the effect that you then
+can run the two examples by "OPS -i example1.ctr" and "OPS -i example2.ctr".
+The script is called like
+"perl Prepctr.pl FS_ROOT".
+where FS_ROOT is such that FS_ROOTApplic points to the directory with your
+RIVM installation. Note that the last character of FS_ROOT much be / on Linux,
+\ on Windows.
+The results of your two OPS runs go to the subdirectory "output". Compare them
+to the corresponding files in examples.zip (that you should extract yourself).
+
+3. Some other things (not relevant when porting)
+--------------------
+The original Fortran source code of OPS has many real*4 and some real*8. This
+is not really portable. The sources have been changed to replace these by
+real and double precision, by the script Preproc.pl. This script is provided
+because it may give a hint how to do a more modern conversion, to "KIND" and
+"SELECTED_REAL_KIND".
+_______________________________________________________________________________
+
+The below was valid for OPS pre version 5.0.0.0 and may be ignored
  A testset consisting of two example OPS runs
 
 Gerard Cats, 24 August 2020
