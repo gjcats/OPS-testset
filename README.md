@@ -7,7 +7,7 @@ Some assistance for porting OPS
 When you request OPS from RIVM you get a directory Applics/OPS-Pro_2020
 including examples.zip, and a directory Data.
 
-For version 5.0.0.0., only the following files are relevant:
+For version 5.0.0.0., only the following files within this testset are relevant:
 1. For conversion of Fortran unformatted files:
 opsINasc.zip asc2for.f90 asc2for.sh
 2. For preparing the control files:
@@ -19,10 +19,10 @@ The Data directory contains many Fortran unformatted files. When porting
 to a system where the Fortran compiler uses a different internal format
 (e.g. big-endian, or non IEEE), you can create the files in local internal
 format by unzipping opsINasc.zip, and converting the resulting ascii files
-into Fortran unformatted with the script asc2for.f90.
+into Fortran unformatted with the script asc2for.sh.
 NB1: make sure to use the same compiler and compiler flags in the script asc2for.sh
 as you are going to use to make the OPS executable.
-NB2: the resulting .ops files must be overwrite their "parents" in the
+NB2: the resulting .ops files must overwrite their "parents" in the
 Data directory, because that is where OPS is going to expect them. You
 may want to make a backup of the parents first!
 NB3: when you are going to use influence of buildings in OPS, you need to
